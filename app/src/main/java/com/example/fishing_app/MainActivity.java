@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity
             array = getResources().getStringArray(R.array.history_array);
             arrayAdapter.clear();
             arrayAdapter.addAll(array);
+            arrayAdapter.addAll(array);
             arrayAdapter.notifyDataSetChanged();
         }
         if (id == R.id.id_advice) {
