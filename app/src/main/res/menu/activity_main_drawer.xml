@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group >
+        <item
+            android:id="@+id/id_fish"
+            android:icon="@drawable/ic_fish"
+            android:title="@string/fish" />
+        <item
+            android:id="@+id/id_staff"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/staff" />
+        <item
+            android:id="@+id/id_lure"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/lure" />
+    </group>
+
+    <item android:title="Разное">
+        <menu>
+            <item
+                android:id="@+id/id_history"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/history" />
+            <item
+                android:id="@+id/id_advice"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="@string/advice" />
+        </menu>
+    </item>
+
+
+</menu>
