@@ -11,7 +11,7 @@
             android:title="@string/fish" />
         <item
             android:id="@+id/id_staff"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/staff" />
         <item
             android:id="@+id/id_lure"
