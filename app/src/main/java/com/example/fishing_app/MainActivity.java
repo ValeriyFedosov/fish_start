@@ -25,9 +25,12 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener{
+    public static final String CATEGORY = "category";
+    public static final String POSITION = "position";
+    private int categoryIndex;
     private ActivityMainBinding activityMainBinding;
     private String[] array;
-    DrawerLayout drawer;
+    DrawerLayout drawerLayout;
     private ArrayAdapter<String> arrayAdapter;
     Toolbar toolbar;
 
@@ -36,24 +39,33 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
-        ListView listView = findViewById(R.id.list_view);
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            startActivity(new Intent(MainActivity.this, TextContentActivity.class));
-        });
         array = getResources().getStringArray(R.array.fish_array);
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<>(
+        // android.R.layout.simple_list_item_1 - шаблон, в которм текст элементов массива идёт
+        // один над другим с разделетельной полосой
+        arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, new ArrayList<>(
                 Arrays.asList(array)));
+
+        ListView listView = findViewById(R.id.list_view);
         listView.setAdapter(arrayAdapter);
-        toolbar = findViewById(R.id.toolbar);
+        //
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            // замапить/получить разрешение на создание нового Activity. Также добавление в Манифест
+            Intent intent = new Intent(MainActivity.this, TextContentActivity.class);
+            intent.putExtra(CATEGORY, categoryIndex);
+            intent.putExtra(POSITION, position);
+            startActivity(intent);
+        });
+
         setSupportActionBar(activityMainBinding.appBarMain.toolbar);
-        drawer = activityMainBinding.drawerLayout;
+        drawerLayout = activityMainBinding.drawerLayout;
         NavigationView navigationView = activityMainBinding.navView;
 
+        toolbar = findViewById(R.id.toolbar);
         // кнопка сверху слева в 3 полоски
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -89,15 +101,16 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
         // свернуть Nav Drawer при нажатии на кнопку меню
-        drawer.closeDrawer(GravityCompat.START);
+        drawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
 
-    private void clearAddAllNotify(int title, int resources_array) {
+    private void clearAddAllNotify(int category, int resources_array) {
         this.array = getResources().getStringArray(resources_array);
-        toolbar.setTitle(title);
+        toolbar.setTitle(category);
         arrayAdapter.clear();
         arrayAdapter.addAll(array);
         arrayAdapter.notifyDataSetChanged();
+        categoryIndex = category;
     }
 }
