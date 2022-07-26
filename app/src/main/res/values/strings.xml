@@ -6,6 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="button_start">Start</string>
     <string name="fish">Рыба</string>
     <string name="staff">Снасти</string>
     <string name="lure">Наживка</string>
