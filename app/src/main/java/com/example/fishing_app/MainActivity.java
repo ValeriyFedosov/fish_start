@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 
 import com.example.fishing_app.databinding.ActivityMainBinding;
+import com.example.fishing_app.settings.SettingActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -77,8 +78,16 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-    // setNavigationItemSelectedListener(this) - при нажатии на кнопку суда будет передаваться выбранный элемент
+    // setNavigationItemSelectedListener(this) - при нажатии на кнопку навигации суда будет передаваться
+    // выбранный элемент
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // понять какой именно item нажат

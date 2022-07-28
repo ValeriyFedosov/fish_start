@@ -26,6 +26,7 @@
         </activity>
         <activity android:name=".TextContentActivity" />
         <activity android:name=".MainActivity" android:theme="@style/Theme.Fishing_App.NoActionBar" />
+        <activity android:name=".settings.SettingActivity" />
     </application>
 
 </manifest>
