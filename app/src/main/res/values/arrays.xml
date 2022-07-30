@@ -7,6 +7,13 @@
         <item>Карась</item>
         <item>Налим</item>
     </string-array>
+    <string-array name="fish_array_2">
+        <item>Карп2</item>
+        <item>Шука2</item>
+        <item>Сом2</item>
+        <item>Карась2</item>
+        <item>Налим2</item>
+    </string-array>
     <string-array name="lure_array">
         <item>Червь</item>
         <item>Кукуруза</item>
